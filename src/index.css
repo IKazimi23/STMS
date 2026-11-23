@@ -1,0 +1,126 @@
+
+/* =========================================
+   STMS GLOBAL FOUNDATION
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800&display=swap');
+
+/* Global variables */
+
+:root {
+  font-family: 'Saira', sans-serif;
+
+  color: #FFFFFF;
+  background: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --stms-navy: #043051;
+  --stms-green: #66BA6B;
+  --stms-green-dark: #2E7D32;
+  --stms-white: #FFFFFF;
+  --stms-muted: #C7D6E5;
+}
+
+/* Box sizing */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Document */
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  font-family: 'Saira', sans-serif;
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* React root */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-family: 'Saira', sans-serif;
+  color: inherit;
+}
+
+p {
+  margin-top: 0;
+}
+
+/* Form elements */
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+input {
+  color-scheme: dark;
+}
+
+/* Images */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Links */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Accessibility */
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid #66BA6B;
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
