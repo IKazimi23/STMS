@@ -1,10 +1,10 @@
 
 import { useState } from "react";
 
-import Login from "./Login";
-import Signup from "./Signup";
+import Login from "./login";
+import Signup from "./signup";
 import Verification from "./Verification";
-import Verifying from "./Verifying";
+import Verifying from "./verifying";
 import Confirmed from "./Confirmed";
 import Setup from "./setup";
 import Dashboard from "./Dashboard";
