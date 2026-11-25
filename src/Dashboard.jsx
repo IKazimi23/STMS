@@ -174,44 +174,15 @@ function Dashboard({ profilePhoto }) {
       </section>
 
       <section className="traffic-map">
-        <div className="map-streets">
-          <span className="map-river" />
-          <span className="map-road road-one" />
-          <span className="map-road road-two" />
-          <span className="map-road road-three" />
-          <span className="map-road road-four" />
-          <span className="map-road road-five" />
-          <span className="map-road road-six" />
-
-          <span className="map-place place-one">Charing Cross</span>
-          <span className="map-place place-two">Strand</span>
-          <span className="map-place place-three">River Thames</span>
-          <span className="map-place place-four">Waterloo Bridge</span>
-          <span className="map-place place-five">London</span>
-        </div>
-
-        <div className="map-heading">LONDON TRAFFIC</div>
-        <div className="map-illustrative">Illustrative incidents</div>
-
-        <div className="map-marker accident-marker">
-          <span>➤</span>
-          <strong>Accident</strong>
-        </div>
-
-        <div className="map-marker moderate-marker">
-          <span>⚒</span>
-          <strong>Moderate</strong>
-        </div>
-
-        <div className="map-marker cleared-marker">
-          <span><Icon name="check" size={23} color="white" /></span>
-          <strong>Cleared</strong>
-        </div>
-
-        <div className="map-credit">
-          Map: Esri, HERE, Garmin, © OpenStreetMap contributors
-        </div>
-      </section>
+  <iframe
+    className="google-map-frame"
+    src="https://www.google.com/maps?q=London%2C%20UK&z=13&output=embed"
+    title="Google Map of London"
+    loading="lazy"
+    allowFullScreen
+    referrerPolicy="no-referrer-when-downgrade"
+  />
+</section>
 
       <section className="map-legend">
         <div><i className="legend-clear" />Clear</div>
