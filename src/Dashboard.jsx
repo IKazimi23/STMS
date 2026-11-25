@@ -262,8 +262,8 @@ function Dashboard({ profilePhoto, userName }) {
   <Icon name={item.icon} size={20} />
 </span>
 <span className="nav-label">
-  {item.name === "user"
-    ? (userName || "User")
+  {item.name === "profile"
+    ? (userName || "Profile")
     : item.name.charAt(0).toUpperCase() + item.name.slice(1)}
 </span>
     </button>
