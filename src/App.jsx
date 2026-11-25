@@ -77,7 +77,7 @@ function App() {
     );
   }
 
-  // CAMERA
+   // CAMERA
   if (currentPage === "camera") {
     return (
       <TakePhoto
@@ -92,12 +92,13 @@ function App() {
 
   // DASHBOARD
   if (currentPage === "dashboard") {
-    return (
-      <Dashboard
-        profilePhoto={profilePhoto}
-      />
-    );
-  }
+  return (
+    <Dashboard
+      profilePhoto={profilePhoto}
+      userName={userName}
+    />
+  );
+}
 
   // WELCOME
   return (

@@ -2295,6 +2295,17 @@ border: 0.5px solid rgba(188, 0, 0, 0.9);
   font-size: 12px;
   font-weight: 700;
 }
+.dashboard-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-user-name {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
 
 /* =========================================
    RESPONSIVE SIZING

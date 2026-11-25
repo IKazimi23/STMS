@@ -93,6 +93,7 @@ function Icon({ name, size = 24, color = "currentColor" }) {
 }
 
 function Dashboard({ profilePhoto, userName }) {
+    console.log("Dashboard userName:", userName);
   const [role, setRole] = useState("driver");
   const [activeTab, setActiveTab] = useState("home");
   const [selectedAction, setSelectedAction] = useState("");
@@ -117,11 +118,11 @@ function Dashboard({ profilePhoto, userName }) {
       
 
       <header className="dashboard-header">
-        <img
-          className="dashboard-avatar"
-          src={profilePhoto || "https://i.pravatar.cc/128?img=12"}
-          alt="Profile"
-        />
+       <img
+  className="dashboard-avatar"
+  src={profilePhoto}
+  alt="Profile"
+/>
 
         <img
           className="dashboard-logo"

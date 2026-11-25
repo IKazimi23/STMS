@@ -1,9 +1,7 @@
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-function Setup({ onFinish, onBack }) {
-  const [photo, setPhoto] = useState(null);
-
+function Setup({ photo, onPhotoChange, onTakePhoto, onFinish, onBack }) {
   const fileInputRef = useRef(null);
   const cameraInputRef = useRef(null);
 
@@ -11,8 +9,11 @@ function Setup({ onFinish, onBack }) {
     const file = event.target.files?.[0];
 
     if (file) {
-      setPhoto(URL.createObjectURL(file));
+      const imageURL = URL.createObjectURL(file);
+      onPhotoChange(imageURL);
     }
+
+    event.target.value = "";
   }
 
   return (
@@ -94,7 +95,7 @@ function Setup({ onFinish, onBack }) {
       <button
         type="button"
         className="setup-option setup-option--camera"
-        onClick={() => cameraInputRef.current?.click()}
+        onClick={onTakePhoto}
       >
         Take a photo
       </button>
@@ -103,7 +104,7 @@ function Setup({ onFinish, onBack }) {
       <button
         type="button"
         className="setup-option setup-option--library"
-        onClick={() => fileInputRef.current?.click()}
+        onClick={() => cameraInputRef.current?.click()}
       >
         Choose from library
       </button>
