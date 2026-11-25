@@ -95,7 +95,8 @@ function Setup({ photo, onPhotoChange, onTakePhoto, onFinish, onBack }) {
       <button
         type="button"
         className="setup-option setup-option--camera"
-        onClick={onTakePhoto}
+       
+        onClick={() => cameraInputRef.current?.click()}
       >
         Take a photo
       </button>
@@ -104,7 +105,7 @@ function Setup({ photo, onPhotoChange, onTakePhoto, onFinish, onBack }) {
       <button
         type="button"
         className="setup-option setup-option--library"
-        onClick={() => cameraInputRef.current?.click()}
+         onClick={() => fileInputRef.current?.click()}
       >
         Choose from library
       </button>

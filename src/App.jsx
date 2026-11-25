@@ -77,18 +77,6 @@ function App() {
     );
   }
 
-   // CAMERA
-  if (currentPage === "camera") {
-    return (
-      <TakePhoto
-        onCancel={() => setCurrentPage("setup")}
-        onCapture={(photo) => {
-          setProfilePhoto(photo);
-          setCurrentPage("setup");
-        }}
-      />
-    );
-  }
 
   // DASHBOARD
   if (currentPage === "dashboard") {
