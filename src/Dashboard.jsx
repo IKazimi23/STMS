@@ -92,7 +92,7 @@ function Icon({ name, size = 24, color = "currentColor" }) {
   );
 }
 
-function Dashboard({ profilePhoto }) {
+function Dashboard({ profilePhoto, userName }) {
   const [role, setRole] = useState("driver");
   const [activeTab, setActiveTab] = useState("home");
   const [selectedAction, setSelectedAction] = useState("");
@@ -259,12 +259,13 @@ function Dashboard({ profilePhoto }) {
       aria-label={item.name}
     >
       <span className="nav-icon">
-        <Icon name={item.icon} size={20} />
-      </span>
-
-      <span className="nav-label">
-        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-      </span>
+  <Icon name={item.icon} size={20} />
+</span>
+<span className="nav-label">
+  {item.name === "user"
+    ? (userName || "User")
+    : item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+</span>
     </button>
   ))}
 </nav>

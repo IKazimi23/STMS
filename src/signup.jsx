@@ -28,7 +28,8 @@ function Signup({ onLogin, onNext }) {
     return;
   }
 
-  onNext();
+  onNext({firstName: form.firstName,
+  lastName: form.lastName,});
 }
 
   return (

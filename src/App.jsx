@@ -12,6 +12,7 @@ import Dashboard from "./Dashboard";
 function App() {
   const [currentPage, setCurrentPage] = useState("welcome");
   const [profilePhoto, setProfilePhoto] = useState(null);
+  const [userName, setUserName] = useState("");
 
   // LOGIN
   if (currentPage === "login") {
@@ -26,9 +27,12 @@ function App() {
   if (currentPage === "signup") {
     return (
       <Signup
-        onLogin={() => setCurrentPage("login")}
-        onNext={() => setCurrentPage("verification")}
-      />
+  onLogin={() => setCurrentPage("login")}
+  onNext={(name) => {
+    setUserName(`${name.firstName} ${name.lastName}`);
+    setCurrentPage("verification");
+  }}
+/>
     );
   }
 
