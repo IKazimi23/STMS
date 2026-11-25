@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import Profile from "./Profile";
 
 function Icon({ name, size = 24, color = "currentColor" }) {
   const paths = {
@@ -92,8 +93,14 @@ function Icon({ name, size = 24, color = "currentColor" }) {
   );
 }
 
-function Dashboard({ profilePhoto, userName }) {
-    console.log("Dashboard userName:", userName);
+function Dashboard({
+  profilePhoto,
+  userName,
+  userEmail,
+  onLogout,
+}) {
+  console.log("Dashboard userName:", userName);
+
   const [role, setRole] = useState("driver");
   const [activeTab, setActiveTab] = useState("home");
   const [selectedAction, setSelectedAction] = useState("");
@@ -115,173 +122,194 @@ function Dashboard({ profilePhoto, userName }) {
 
   return (
     <main className="dashboard">
-      
 
-      <header className="dashboard-header">
-       <img
-  className="dashboard-avatar"
-  src={profilePhoto}
-  alt="Profile"
-/>
-
-        <img
-          className="dashboard-logo"
-          src="/stms-logo.png"
-          alt="STMS Smart Traffic Management System"
+      {activeTab === "profile" ? (
+        <Profile
+          profilePhoto={profilePhoto}
+          userName={userName}
+          userEmail={userEmail}
+          onBack={() => setActiveTab("home")}
+          onLogout={onLogout}
+          onOpenSection={(section) => setSelectedAction(section)}
         />
+      ) : (
+        <>
+          <header className="dashboard-header">
+            <img
+              className="dashboard-avatar"
+              src={profilePhoto}
+              alt="Profile"
+            />
 
-        <button
-          className="dashboard-notification"
-          onClick={() => setSelectedAction("Notifications")}
-          aria-label="Notifications"
-        >
-          <Icon name="bell" size={25} color="#334155" />
-          <span className="notification-dot" />
-        </button>
-      </header>
+            <img
+              className="dashboard-logo"
+              src="/stms-logo.png"
+              alt="STMS Smart Traffic Management System"
+            />
 
-      <section className="dashboard-role">
-        <button
-          className={role === "driver" ? "role-option selected" : "role-option"}
-          onClick={() => setRole("driver")}
-        >
-          <Icon name="car" size={20} />
-          Driver
-        </button>
-
-        <button
-          className={role === "operator" ? "role-option selected" : "role-option"}
-          onClick={() => setRole("operator")}
-        >
-          <Icon name="shield" size={20} />
-          Operator
-        </button>
-      </section>
-
-      <section className="traffic-status">
-        <div className="traffic-icon">
-          <Icon name="gauge" size={38} color="#67FA6F" />
-        </div>
-
-        <div className="traffic-description">
-          <span className="traffic-label">CITY TRAFFIC</span>
-          <h1>Light congestion</h1>
-        </div>
-
-        <div className="traffic-percentage">
-          <strong>82%</strong>
-          <span>network flowing</span>
-        </div>
-      </section>
-
-      <section className="traffic-map">
-  <iframe
-    className="google-map-frame"
-    src="https://www.google.com/maps?q=London%2C%20UK&z=13&output=embed"
-    title="Google Map of London"
-    loading="lazy"
-    allowFullScreen
-    referrerPolicy="no-referrer-when-downgrade"
-  />
-</section>
-
-      <section className="map-legend">
-        <div><i className="legend-clear" />Clear</div>
-        <div><i className="legend-moderate" />Moderate</div>
-        <div><i className="legend-severe" />Severe</div>
-        <span>Updated 2m ago</span>
-      </section>
-
-      <section className="quick-actions">
-        <h2>Quick actions</h2>
-
-        <div className="action-grid">
-          {actions.map((action) => (
             <button
-              className="action-card"
-              key={action.name}
-              onClick={() => setSelectedAction(action.name)}
+              className="dashboard-notification"
+              onClick={() => setSelectedAction("Notifications")}
+              aria-label="Notifications"
             >
-              <Icon name={action.icon} size={32} color={action.color} />
-              <span>{action.name}</span>
+              <Icon name="bell" size={25} color="#334155" />
+              <span className="notification-dot" />
             </button>
-          ))}
-        </div>
-      </section>
+          </header>
 
-      <section className="active-nearby">
-        <div className="section-heading">
-          <h2>Active nearby</h2>
-          <button onClick={() => setSelectedAction("All incidents")}>
-            See all
-          </button>
-        </div>
+          <section className="dashboard-role">
+            <button
+              className={role === "driver" ? "role-option selected" : "role-option"}
+              onClick={() => setRole("driver")}
+            >
+              <Icon name="car" size={20} />
+              Driver
+            </button>
 
-        <button
-          className="incident-card"
-          onClick={() => setSelectedAction("Collision on Riverside Drive")}
-        >
-          <div className="incident-icon">
-            <Icon name="car" size={29} color="#E7000B" />
-          </div>
+            <button
+              className={role === "operator" ? "role-option selected" : "role-option"}
+              onClick={() => setRole("operator")}
+            >
+              <Icon name="shield" size={20} />
+              Operator
+            </button>
+          </section>
 
-          <div className="incident-details">
-            <div className="incident-meta">
-              <strong>Critical</strong>
-              <span>8 min ago</span>
+          <section className="traffic-status">
+            <div className="traffic-icon">
+              <Icon name="gauge" size={38} color="#67FA6F" />
             </div>
 
-            <h3>Collision on Riverside Drive</h3>
-            <p>2 lanes blocked · Expect 18 min delay</p>
-          </div>
+            <div className="traffic-description">
+              <span className="traffic-label">CITY TRAFFIC</span>
+              <h1>Light congestion</h1>
+            </div>
 
-          <Icon name="arrow" size={25} color="white" />
-        </button>
-      </section>
+            <div className="traffic-percentage">
+              <strong>82%</strong>
+              <span>network flowing</span>
+            </div>
+          </section>
 
-      <section className="safety-reminder">
-        <Icon name="shield" size={22} color="#7DFF82" />
-        <p>
-          <strong>Drive safely.</strong> Plan and review routes before you begin
-          your journey.
-        </p>
-      </section>
+          <section className="traffic-map">
+            <iframe
+              className="google-map-frame"
+              src="https://www.google.com/maps?q=London%2C%20UK&z=13&output=embed"
+              title="Google Map of London"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </section>
+
+          <section className="map-legend">
+            <div><i className="legend-clear" />Clear</div>
+            <div><i className="legend-moderate" />Moderate</div>
+            <div><i className="legend-severe" />Severe</div>
+            <span>Updated 2m ago</span>
+          </section>
+
+          <section className="quick-actions">
+            <h2>Quick actions</h2>
+
+            <div className="action-grid">
+              {actions.map((action) => (
+                <button
+                  className="action-card"
+                  key={action.name}
+                  onClick={() => setSelectedAction(action.name)}
+                >
+                  <Icon name={action.icon} size={32} color={action.color} />
+                  <span>{action.name}</span>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="active-nearby">
+            <div className="section-heading">
+              <h2>Active nearby</h2>
+              <button onClick={() => setSelectedAction("All incidents")}>
+                See all
+              </button>
+            </div>
+
+            <button
+              className="incident-card"
+              onClick={() => setSelectedAction("Collision on Riverside Drive")}
+            >
+              <div className="incident-icon">
+                <Icon name="car" size={29} color="#E7000B" />
+              </div>
+
+              <div className="incident-details">
+                <div className="incident-meta">
+                  <strong>Critical</strong>
+                  <span>8 min ago</span>
+                </div>
+
+                <h3>Collision on Riverside Drive</h3>
+                <p>2 lanes blocked · Expect 18 min delay</p>
+              </div>
+
+              <Icon name="arrow" size={25} color="white" />
+            </button>
+          </section>
+
+          <section className="safety-reminder">
+            <Icon name="shield" size={22} color="#7DFF82" />
+            <p>
+              <strong>Drive safely.</strong> Plan and review routes before you begin
+              your journey.
+            </p>
+          </section>
+        </>
+      )}
 
       <nav className="dashboard-navigation">
-  {navigation.map((item) => (
-    <button
-      key={item.name}
-      className={
-        activeTab === item.name
-          ? "nav-item nav-active"
-          : "nav-item"
-      }
-      onClick={() => setActiveTab(item.name)}
-      aria-label={item.name}
-    >
-      <span className="nav-icon">
-  <Icon name={item.icon} size={20} />
-</span>
-<span className="nav-label">
-  {item.name === "profile"
-    ? (userName || "Profile")
-    : item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-</span>
-    </button>
-  ))}
-</nav>
+        {navigation.map((item) => (
+          <button
+            key={item.name}
+            className={
+              activeTab === item.name
+                ? "nav-item nav-active"
+                : "nav-item"
+            }
+            onClick={() => setActiveTab(item.name)}
+            aria-label={item.name}
+          >
+            <span className="nav-icon">
+              <Icon name={item.icon} size={20} />
+            </span>
+
+            <span className="nav-label">
+              {item.name === "profile"
+                ? (userName || "Profile")
+                : item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+            </span>
+          </button>
+        ))}
+      </nav>
 
       {selectedAction && (
-        <div className="dashboard-modal-backdrop" onClick={() => setSelectedAction("")}>
-          <div className="dashboard-modal" onClick={(event) => event.stopPropagation()}>
+        <div
+          className="dashboard-modal-backdrop"
+          onClick={() => setSelectedAction("")}
+        >
+          <div
+            className="dashboard-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
             <button
               className="modal-close"
               onClick={() => setSelectedAction("")}
             >
               ×
             </button>
+
             <h2>{selectedAction}</h2>
             <p>This feature will be connected to the STMS system.</p>
+
             <button
               className="modal-done"
               onClick={() => setSelectedAction("")}
