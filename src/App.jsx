@@ -64,18 +64,7 @@ function App() {
     );
   }
 
-  // PROFILE SETUP
-  if (currentPage === "setup") {
-    return (
-      <Setup
-        photo={profilePhoto}
-        onPhotoChange={setProfilePhoto}
-        onTakePhoto={() => setCurrentPage("camera")}
-        onFinish={() => setCurrentPage("dashboard")}
-        onBack={() => setCurrentPage("confirmed")}
-      />
-    );
-  }
+
 
 
   // DASHBOARD

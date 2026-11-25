@@ -1,7 +1,7 @@
 
 import { useRef } from "react";
 
-function Setup({ photo, onPhotoChange, onTakePhoto, onFinish, onBack }) {
+function Setup({ photo, onPhotoChange, onFinish, onBack  }) {
   const fileInputRef = useRef(null);
   const cameraInputRef = useRef(null);
 
