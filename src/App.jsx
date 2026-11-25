@@ -64,8 +64,17 @@ function App() {
     );
   }
 
-
-
+  // SETUP
+  if (currentPage === "setup") {
+    return (
+      <Setup
+        photo={profilePhoto}
+        onPhotoChange={setProfilePhoto}
+        onFinish={() => setCurrentPage("dashboard")}
+        onBack={() => setCurrentPage("confirmed")}
+      />
+    );
+  }
 
   // DASHBOARD
   if (currentPage === "dashboard") {
